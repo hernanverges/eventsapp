@@ -70,7 +70,7 @@ function Map() {
 
   return (
     <div>
-      <div id="map" style={{ height: '500px' }}></div>
+      <div id="map" style={{ height: '300px' }}></div>
       <div>{error && <p>{error}</p>}</div>
     </div>
   );

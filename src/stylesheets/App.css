@@ -7,7 +7,8 @@
   justify-content: center;
   text-align: center;
   background-color: #E6E6FA;
-  width: 100%;
+  height: 100%;
+  width: 100vw;
 }
 
 .eventos-lista{
@@ -17,14 +18,3 @@
   flex-wrap: wrap;
 }
 
-
-
-
-
-
-/* MEDIA QUERYS */
-
-  .eventos-lista{
-  max-height: 40%;
-  }
-  

@@ -1,0 +1,52 @@
+h1{
+    font-size: 40px;
+    color:#000000;
+    padding: 5px;
+  }
+
+
+.nav-menu{
+    justify-content: space-between;
+}
+
+a{
+    padding: 5px;
+}
+
+
+  .header-container {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #FFF; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    max-height: 5vh;
+  }
+
+  .search-bar{
+    width: 30%;
+    padding: 10px;
+  }
+
+  input{
+    border-radius: 15px;
+    height: 5vh;
+    background-color: #FFF9;
+    border: 2px solid black;
+    width: 80%;
+    box-shadow: #000000;
+    font-family: Inter, sans-serif;
+  }
+
+  .logo-text {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* alinea a la izquierda */
+    min-width: 15%;
+  }

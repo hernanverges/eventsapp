@@ -1,0 +1,39 @@
+.map-container{
+    height: 60vh;
+    width: 90vw;
+    margin: 20px;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid black;
+    overflow: hidden;
+  }
+
+/*Location Marker & animation*/
+  .location-icon .marker {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: #005baf; 
+    border: 3px solid white; 
+    animation: blink 1s ease-in-out infinite; 
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+  /***********************  MEDIA QUERYS **********************************/
+
+@media (max-width: 400px) {
+    .map-container{
+    max-height: 40vh;
+    }
+    }

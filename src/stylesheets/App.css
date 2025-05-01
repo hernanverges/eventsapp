@@ -1,0 +1,34 @@
+
+.home-container, .app-container{
+  font-family: Inter, sans-serif;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: #E6E6FA;
+  width: 100%;
+}
+
+h1{
+  font-size: 80px;
+}
+
+.eventos-lista{
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+  flex-wrap: wrap;
+}
+
+
+
+
+
+
+/* MEDIA QUERYS */
+
+  .eventos-lista{
+  max-height: 40%;
+  }
+  

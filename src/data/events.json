@@ -1,0 +1,11 @@
+[
+    {
+      "id": "1",
+      "titulo": "Feria Vegana",
+      "barrio": "Palermo",
+      "fecha": "2025-05-10",
+      "lat": -34.5781,
+      "lng": -58.4269,
+      "descripcion": "Comidas veganas, música y actividades al aire libre."
+    }
+  ]

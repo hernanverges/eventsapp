@@ -1,5 +1,0 @@
-html, body {
-  width: 100%;
-  overflow-x: hidden; /* Evita el desplazamiento horizontal */
-  margin: 0; /* Asegura que no haya márgenes extra */
-}

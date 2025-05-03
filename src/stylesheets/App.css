@@ -1,6 +1,5 @@
 
 .home-container, .app-container{
-  font-family: Inter, sans-serif;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -8,13 +7,9 @@
   text-align: center;
   background-color: #E6E6FA;
   height: 100%;
-  width: 100vw;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.eventos-lista{
-  display: flex;
-  flex-direction: row;
-  width: 90vw;
-  flex-wrap: wrap;
-}
+
 

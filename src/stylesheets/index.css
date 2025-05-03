@@ -1,0 +1,7 @@
+html, body {
+  width: 100%;
+  overflow-x: hidden; 
+  margin: 0; 
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}

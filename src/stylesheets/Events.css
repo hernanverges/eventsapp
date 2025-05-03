@@ -7,11 +7,12 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 30px;
+    padding: 20px;
   }
   
   .event-card {
-    padding: 20px;
+    margin: 10px;
+    padding: 10px;
     border-radius: 8px;
     text-align: center;
     gap: 3px;
@@ -25,12 +26,12 @@
   .event-image{
     object-fit: contain;
     max-width: 80%;
-    height: auto;
+    height: 200px;
   }
   
   .event-card h2 {
     font-size: 1.4em;
-    margin-bottom: 6px;
+    margin-bottom: 2px;
   }
   
   .event-card p {

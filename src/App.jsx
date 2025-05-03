@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import EventDetail from './components/EventDetail';
-import EventCard from './components/EventCard';
 import Home from './pages/Home';
+import CreateEvent from './pages/CreateEvent';
 
 function App() {
   return (
@@ -9,7 +9,8 @@ function App() {
     className="app-container">
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/eventos/:id" element={<EventDetail />} /> {/* Ruta de detalle de evento */}
+      <Route path="/eventss/:id" element={<EventDetail />} /> {}
+      <Route path="/create-event" element={<CreateEvent />} />
     </Routes>
     </div>
   );

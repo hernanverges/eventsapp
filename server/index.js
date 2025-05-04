@@ -19,26 +19,24 @@ const storage = multer.diskStorage({
     cb(null, 'public/images');  
   },
   filename: (req, file, cb) => {
-    // El nombre del archivo será el ID del evento seguido de la extensión .png
-    cb(null, 'temp-' + Date.now() + path.extname(file.originalname)); // Temporal para poder asignar el ID después
+    cb(null, 'temp-' + Date.now() + path.extname(file.originalname)); 
   },
 });
 
 const upload = multer({ storage });
 
-// Servir imágenes estáticas desde 'public/images'
-app.use('/images', express.static('public/images'));
-
-// Usar el router de eventos
 app.use('/api/events', eventsRouter);
 
-// Conectar a MongoDB
+app.use('/images', express.static('public/images'));
+
+app.use('/api/events', eventsRouter);
+
 const PORT = process.env.PORT || 5000;
-const MONGO = process.env.MONGO_URI;  // URI de MongoDB desde .env
+const MONGO = process.env.MONGO_URI;  
 
 if (!MONGO) {
   console.error("MongoDB URI no está definida en el archivo .env");
-  process.exit(1);  // Termina el proceso si no se encuentra la URI
+  process.exit(1);  
 }
 
 mongoose.connect(MONGO)
@@ -48,16 +46,16 @@ mongoose.connect(MONGO)
   })
   .catch((error) => {
     console.error("Error al conectar con MongoDB:", error);
-    process.exit(1);  // Termina el proceso si no se puede conectar a la base de datos
+    process.exit(1);  
   });
 
-// Rutas para crear un evento con una imagen
+//CREATE AND SAVE EVENTS//
 app.post('/api/events', upload.single('image'), async (req, res) => {
   try {
-    // Recoger los datos del evento del cuerpo de la solicitud
+    
     const { title, description, date, time, location, category } = req.body;
 
-    // Crear el nuevo evento sin la imagen aún
+    
     const event = new Event({
       title,
       description,
@@ -67,20 +65,16 @@ app.post('/api/events', upload.single('image'), async (req, res) => {
       category,
     });
 
-    // Guardamos el evento para obtener el ID
+    //RENAME IMAGES//
     const savedEvent = await event.save();
 
-    // Asignar el nombre del archivo con el ID del evento
     const imagePath = `/images/${savedEvent._id}.png`;
 
-    // Renombramos la imagen de forma temporal a la del ID del evento
     const oldPath = path.join('public/images', req.file.filename);
     const newPath = path.join('public/images', `${savedEvent._id}.png`);
 
-    // Renombrar la imagen
     fs.renameSync(oldPath, newPath);
 
-    // Actualizamos el evento con la ruta de la imagen
     savedEvent.image = imagePath;
     await savedEvent.save();
 

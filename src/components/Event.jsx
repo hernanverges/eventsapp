@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import '../stylesheets/Events.css';
 
 function Event({ id, title, date, time, direction, city, province, price, category }) {
+
   return (
     <div className='event-card'>
       <h2>{title}</h2>

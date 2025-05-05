@@ -1,9 +1,6 @@
 import '../stylesheets/Events.css';
 import Event from './Event.jsx';
 
-import '../stylesheets/Events.css';
-import Event from './Event.jsx';
-
 function EventCard({ event }) {
 
   function capitalize(str) {

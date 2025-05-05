@@ -9,7 +9,10 @@ export default function EventForm() {
     description: '',
     date: '',
     time: '',
-    location: '',
+    direction: '',
+    city: '',
+    province: '',
+    price:'',
     category: '',
     image: null,  // Para almacenar la imagen seleccionada
   });
@@ -54,7 +57,10 @@ export default function EventForm() {
         description: '',
         date: '',
         time: '',
-        location: '',
+        direction: '',
+        city: '',
+        province: '',
+        price:'',
         category: '',
         image: null,  // Limpiar imagen también
       });
@@ -101,9 +107,33 @@ export default function EventForm() {
       </div>
       <input
         type="text"
-        name="location"
-        placeholder="Dirección o ubicación"
-        value={formData.location}
+        name="direction"
+        placeholder="Dirección"
+        value={formData.direction}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="text"
+        name="city"
+        placeholder="Ciudad"
+        value={formData.city}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="text"
+        name="province"
+        placeholder="Provincia"
+        value={formData.province}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="text"
+        name="price"
+        placeholder="Precio"
+        value={formData.price}
         onChange={handleChange}
         required
       />

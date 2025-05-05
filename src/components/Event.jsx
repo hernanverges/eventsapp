@@ -8,7 +8,7 @@ function Event({ id, title, date, time, direction, city, province, price, catego
       <h2>{title}</h2>
       <img 
         className='event-image'
-        src={`./images/${id}.png`} 
+        src={`../src/uploads/${id}.png`} 
         alt={`Imagen de ${title}`} 
       />
       <p>📍 {direction}, {city} - {province}</p>

@@ -1,18 +1,17 @@
-import multer from 'multer';  // Asegúrate de que esté importado
+import multer from 'multer';  s
 import path from 'path';
-import { fileURLToPath } from 'url';  // Importamos fileURLToPath
-import { dirname } from 'path';  // Importamos dirname
+import { fileURLToPath } from 'url';  
+import { dirname } from 'path';  
 
-// Obtenemos la ruta del directorio actual
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '../public/images'));  // Cambié la ruta a public/images
+    cb(null, path.join(__dirname, '../src/uploads'));  
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));  // Usamos el timestamp para evitar sobrescribir
+    cb(null, Date.now() + path.extname(file.originalname)); 
   }
 });
 

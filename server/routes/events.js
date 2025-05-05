@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '../../public/images'));
+    cb(null, path.join(__dirname, '../../src/uploads'));
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname)); 
@@ -52,7 +52,7 @@ router.post('/', upload.single('image'), async (req, res) => {
     if (req.file) {
       const ext = path.extname(req.file.originalname);
       const newFileName = `${savedEvent._id}${ext}`;
-      const newPath = path.join(__dirname, '../../public/images', newFileName);
+      const newPath = path.join(__dirname, '../../src/uploads', newFileName);
 
       fs.renameSync(req.file.path, newPath);
 

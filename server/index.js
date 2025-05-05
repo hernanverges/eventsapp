@@ -16,7 +16,7 @@ app.use(express.json());
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'public/images');  
+    cb(null, 'src/uploads');  
   },
   filename: (req, file, cb) => {
     cb(null, 'temp-' + Date.now() + path.extname(file.originalname)); 
@@ -27,7 +27,7 @@ const upload = multer({ storage });
 
 app.use('/api/events', eventsRouter);
 
-app.use('/images', express.static('public/images'));
+app.use('/uploads', express.static('src/uploads'));
 
 app.use('/api/events', eventsRouter);
 
@@ -73,8 +73,8 @@ app.post('/api/events', upload.single('image'), async (req, res) => {
 
     const imagePath = `/images/${savedEvent._id}.png`;
 
-    const oldPath = path.join('public/images', req.file.filename);
-    const newPath = path.join('public/images', `${savedEvent._id}.png`);
+    const oldPath = path.join('src/uploads', req.file.filename);
+    const newPath = path.join('src/uploads', `${savedEvent._id}.png`);
 
     fs.renameSync(oldPath, newPath);
 

@@ -17,9 +17,9 @@
 }
 
 .planazo-logo{
-  width: 100px;
-  height: auto;
-  padding: 1rem 1rem 1rem 1rem;
+  width: auto;
+  height: 70px;
+  padding: 0.5rem 1rem 0.5rem 3rem;
 }
 
 .search-bar input {
@@ -75,7 +75,7 @@
   }
 
   .search-bar {
-    padding-right: 20px;
+    padding-right: 3rem;
   }
 }
 

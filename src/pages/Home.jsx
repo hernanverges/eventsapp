@@ -16,7 +16,10 @@ function Home() {
         const response = await fetch(`${API}/events`); 
         if (response.ok) {
           const data = await response.json();
-          setEvents(data);
+          const currentDate = new Date();
+          currentDate.setDate(currentDate.getDate() - 1);
+          const validEvents = data.filter(event => new Date(event.date) > currentDate);
+          setEvents(validEvents);
         } else {
           console.error('Error al cargar los eventos');
         }

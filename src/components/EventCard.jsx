@@ -2,7 +2,6 @@ import '../stylesheets/Events.css';
 import Event from './Event.jsx';
 
 function EventCard({ event }) {
-
   function capitalize(str) {
     if (typeof str !== 'string' || !str) return '';
     return str
@@ -13,6 +12,7 @@ function EventCard({ event }) {
   }
 
   return (
+
     <Event
       key={event._id} 
       id={event._id}

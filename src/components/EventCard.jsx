@@ -30,14 +30,6 @@ function EventCard({ event }) {
       province={capitalize(event.province)}
       price={event.price}
       time={event.time}
-      key={event._id} 
-      id={event._id}
-      title={event.title}
-      date={new Date(event.date).toLocaleDateString("es-AR")}
-      direction={capitalize(event.direction)}
-      city={capitalize(event.city)}
-      province={capitalize(event.province)}
-      time={event.time}
     />
   );
 }

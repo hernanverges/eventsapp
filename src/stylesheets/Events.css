@@ -19,8 +19,8 @@
     width: 100%;  
     max-width: 300px;  
     min-height: 350px;
-    background-color: #A8D5BA;
-    border: 2px solid white;
+    background-color: #FDFDFD;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .event-image{
@@ -35,7 +35,7 @@
   }
   
   .event-card p {
-    font-size: 1.1em;
+    font-size: 1em;
   }
   
   .event-card a {

@@ -1,15 +1,27 @@
 import '../stylesheets/Events.css';
 import Event from './Event.jsx';
 
-function EventCard({ evento }) {
+function EventCard({ event }) {
+
+  function capitalize(str) {
+    if (typeof str !== 'string' || !str) return '';
+    return str
+      .toLowerCase()
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+
   return (
     <Event
-      key={evento._id} 
-      id={evento._id}
-      title={evento.title}
-      date={evento.date}
-      location={evento.location}
-      time={evento.time}
+      key={event._id} 
+      id={event._id}
+      title={event.title}
+      date={new Date(event.date).toLocaleDateString("es-AR")}
+      direction={capitalize(event.direction)}
+      city={capitalize(event.city)}
+      province={capitalize(event.province)}
+      time={event.time}
     />
   );
 }

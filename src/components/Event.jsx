@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../stylesheets/Events.css';
 
-function Event({ id, title, date, time, location }) {
+function Event({ id, title, date, time, direction, city, province }) {
   return (
     <div className='event-card'>
       <h2>{title}</h2>
@@ -10,8 +10,9 @@ function Event({ id, title, date, time, location }) {
         src={`./images/${id}.png`} 
         alt={`Imagen de ${title}`} 
       />
-      <p>{location} - {date}</p>
-      <p>{time}</p>
+      <p>📍 {direction}, {city} - {province}</p>
+      <p>🗓️ {date}</p>
+      <p>🕒 {time}</p>
       <Link to={`/events/${id}`}>Ver detalles</Link>
     </div>
   );

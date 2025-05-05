@@ -32,14 +32,16 @@ router.get('/', async (req, res) => {
 
 router.post('/', upload.single('image'), async (req, res) => {
   try {
-    const { title, description, date, time, location, category } = req.body;
+    const { title, description, date, time, direction, city, province, category } = req.body;
 
     const event = new Event({
       title,
       description,
       date,
       time,
-      location,
+      direction,
+      city,
+      province,
       category,
       image: null, 
     });

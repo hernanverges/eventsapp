@@ -16,13 +16,10 @@
   transform: none;
 }
 
-.logo-text {
-  text-align: center;
-}
-
-.logo-text h1 {
-  font-size: 1.8rem;
-  margin: 1rem;
+.planazo-logo{
+  width: 100px;
+  height: auto;
+  padding: 1rem 1rem 1rem 1rem;
 }
 
 .search-bar input {

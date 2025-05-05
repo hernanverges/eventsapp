@@ -1,14 +1,14 @@
-import '../stylesheets/Header.css'
+import '../stylesheets/Header.css';
 
 function Header() {
     return (
         <div
         className='header-container'>
 
-        <div
-        className="logo-text">
-        <h1>Planazo.AR</h1>
-        </div>
+        <img
+        src="/images/planazo-logo.png"
+        alt="Planazo Logo"
+        className='planazo-logo' />
 
         <nav className="nav-menu">
         <a href="#">Eventos</a>

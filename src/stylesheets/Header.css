@@ -37,7 +37,7 @@
   justify-content: center;
 }
 
-.nav-menu a {
+.nav-Link {
   font-family: Inter, sans-serif;
   color: #007bff;  
   text-decoration: none;  
@@ -49,14 +49,14 @@
 }
 
 
-.nav-menu a:hover {
+.nav-Link:hover {
   background-color: #007bff;  
   color: white;  
   transform: scale(1.05);  
 }
 
 
-.nav-menu a:active {
+.nav-Link:active {
   background-color: #0056b3;  
   color: white;  
   transform: scale(0.98);  

@@ -36,7 +36,7 @@ function Home() {
       <Header></Header>
       <div className="events-list">
         {events.map((event) => (
-          <EventCard key={event._id} event={event} /> 
+          <EventCard key={event._id} event={event} isDetail={false} /> 
         ))}
       </div>
 

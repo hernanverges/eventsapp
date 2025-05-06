@@ -14,6 +14,7 @@ function Event({ id, title, date, time, direction, city, province, price, catego
       <p>📍 {direction}, {city} - {province}</p>
       <p>🗓️ {date}</p>
       <p>🕒 {time}</p>
+
       <Link to={`/events/${id}`}>Ver detalles</Link>
     </div>
   );

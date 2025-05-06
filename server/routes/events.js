@@ -67,4 +67,17 @@ router.post('/', upload.single('image'), async (req, res) => {
   }
 });
 
+router.get('/:id', async (req, res) => {
+  try {
+    const event = await Event.findById(req.params.id);
+    if (!event) {
+      return res.status(404).json({ error: 'Evento no encontrado' });
+    }
+    res.json(event);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error al buscar el evento' });
+  }
+});
+
 export default router;

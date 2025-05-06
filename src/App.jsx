@@ -9,7 +9,7 @@ function App() {
     className="app-container">
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/eventss/:id" element={<EventDetail />} /> {}
+      <Route path="/events/:id" element={<EventDetail />} /> {}
       <Route path="/create-event" element={<CreateEvent />} />
     </Routes>
     </div>

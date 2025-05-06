@@ -3,7 +3,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../stylesheets/Map.css';
 
-function Map() {
+function Map(lat , lon) {
   const [error, setError] = useState(null);
   const [map, setMap] = useState(null);
   const [marker, setMarker] = useState(null); // Mantener el marcador

@@ -5,11 +5,11 @@ const EventSchema = new mongoose.Schema({
   description: { type: String },
   date:        { type: Date,   required: true },
   time:        { type: String, required: true },
-  direction:    { type: String, required: true },
+  address:    { type: String, required: true },
   city:    { type: String, required: true },
   province:    { type: String, required: true },
-  price:    { type: String, required: true },
-  category:    { type: String },
+  price:    { type: Number, required: true },
+  category:    { type: String, required: true },
 }, { timestamps: true });
 
 export default mongoose.model('Event', EventSchema);

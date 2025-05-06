@@ -12,6 +12,15 @@ function EventCard({ event, isDetail }) {
       .join(' ');
   }
 
+  const formattedDate = new Date(event.date).toLocaleDateString("es-AR", {
+    weekday: "long", 
+    day: "2-digit",  
+    month: "long",  
+    year: "numeric"
+  });
+
+  const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+
   return (
   
     isDetail ? 
@@ -19,13 +28,9 @@ function EventCard({ event, isDetail }) {
       key={event._id} 
       id={event._id}
       title={event.title}
-      date={new Date(event.date).toLocaleDateString("es-AR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric"
-      })}
+      date={capitalizedDate}
       description={event.description}
-      direction={capitalize(event.direction)}
+      address={capitalize(event.address)}
       city={capitalize(event.city)}
       province={capitalize(event.province)}
       price={event.price}
@@ -39,13 +44,9 @@ function EventCard({ event, isDetail }) {
       key={event._id} 
       id={event._id}
       title={event.title}
-      date={new Date(event.date).toLocaleDateString("es-AR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric"
-      })}
+      date={capitalizedDate}
       description={event.description}
-      direction={capitalize(event.direction)}
+      address={capitalize(event.address)}
       city={capitalize(event.city)}
       province={capitalize(event.province)}
       price={event.price}

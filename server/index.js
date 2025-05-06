@@ -53,7 +53,7 @@ mongoose.connect(MONGO)
 app.post('/api/events', upload.single('image'), async (req, res) => {
   try {
     
-    const { title, description, date, time, direction, city, province, price, category } = req.body;
+    const { title, description, date, time, address, city, province, price, category } = req.body;
 
     
     const event = new Event({
@@ -61,7 +61,7 @@ app.post('/api/events', upload.single('image'), async (req, res) => {
       description,
       date,
       time,
-      direction,
+      address,
       city,
       province,
       price,

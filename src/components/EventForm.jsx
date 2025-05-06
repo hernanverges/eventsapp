@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../stylesheets/EventForm.css';
+import MapForAddress from './MapForAddress'; 
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -9,31 +10,58 @@ export default function EventForm() {
     description: '',
     date: '',
     time: '',
-    direction: '',
+    address: '',
     city: '',
     province: '',
-    price:'',
+    price: '',
     category: '',
-    image: null,  // Para almacenar la imagen seleccionada
+    image: null,
   });
+
+  const [location, setLocation] = useState(null);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+
+  const verifyAddress = async (address) => {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&countrycodes=AR&limit=1`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.length === 0) {
+        alert("La dirección no es válida.");
+        return null;
+      }
+
+      const { lat, lon, display_name } = data[0];
+      return { lat, lon, display_name };
+    } catch (error) {
+      console.error("Error al verificar la dirección:", error);
+      return null;
+    }
+  };
 
   const handleChange = (e) => {
     if (e.target.name === 'image') {
-      setFormData({
-        ...formData,
-        image: e.target.files[0],  // Asignar el archivo de la imagen
-      });
+      setFormData({ ...formData, image: e.target.files[0] });
     } else {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-      });
+      setFormData({ ...formData, [e.target.name]: e.target.value });
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
+    const fullAddress = `${formData.address}, ${formData.city}, ${formData.province}, Argentina`;
+    const locationData = await verifyAddress(fullAddress);
+
+    if (locationData) {
+      setLocation(locationData);
+      setShowConfirmModal(true); 
+    }
+  };
+
+  const confirmAndSend = async () => {
     const formDataToSend = new FormData();
     for (const key in formData) {
       if (formData[key] !== null && formData[key] !== '') {
@@ -47,7 +75,7 @@ export default function EventForm() {
         body: formDataToSend,
       });
 
-      if (!res.ok) throw new Error('Error al guardar');
+      if (!res.ok) throw new Error('Error al guardar el evento');
 
       const data = await res.json();
       console.log('Evento guardado:', data);
@@ -57,14 +85,16 @@ export default function EventForm() {
         description: '',
         date: '',
         time: '',
-        direction: '',
+        address: '',
         city: '',
         province: '',
-        price:'',
+        price: '',
         category: '',
-        image: null,  // Limpiar imagen también
+        image: null,
       });
 
+      setLocation(null);
+      setShowConfirmModal(false);
       alert('✅ Evento guardado con éxito');
     } catch (err) {
       console.error(err);
@@ -73,86 +103,36 @@ export default function EventForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="event-form" encType="multipart/form-data">
-      <h2>Cargar nuevo evento</h2>
-      <input
-        type="text"
-        name="title"
-        placeholder="Título del evento"
-        value={formData.title}
-        onChange={handleChange}
-        required
-      />
-      <textarea
-        name="description"
-        placeholder="Descripción"
-        value={formData.description}
-        onChange={handleChange}
-      />
-      <div style={{ display: 'flex', gap: '1rem' }}>
-        <input
-          type="date"
-          name="date"
-          value={formData.date}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="time"
-          name="time"
-          value={formData.time}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <input
-        type="text"
-        name="direction"
-        placeholder="Dirección"
-        value={formData.direction}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="city"
-        placeholder="Ciudad"
-        value={formData.city}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="province"
-        placeholder="Provincia"
-        value={formData.province}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="number"
-        name="price"
-        placeholder="Precio"
-        value={formData.price}
-        onChange={handleChange}
-        required
-        step="1"
-        min="0"
-      />
-      <input
-        type="text"
-        name="category"
-        placeholder="Categoría (música, feria, teatro...)"
-        value={formData.category}
-        onChange={handleChange}
-      />
-      <input
-        type="file"
-        name="image"
-        accept="image/*" 
-        onChange={handleChange}
-      />
-      <button type="submit">Guardar evento</button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit} className="event-form" encType="multipart/form-data">
+        <h2>Cargar nuevo evento</h2>
+        <input type="text" name="title" placeholder="Título del evento" value={formData.title} onChange={handleChange} required />
+        <textarea name="description" placeholder="Descripción" value={formData.description} onChange={handleChange} />
+        <div className="row">
+          <input type="date" name="date" value={formData.date} onChange={handleChange} required />
+          <input type="time" name="time" value={formData.time} onChange={handleChange} required />
+        </div>
+        <input type="text" name="address" placeholder="Dirección" value={formData.address} onChange={handleChange} required />
+        <input type="text" name="city" placeholder="Ciudad" value={formData.city} onChange={handleChange} required />
+        <input type="text" name="province" placeholder="Provincia" value={formData.province} onChange={handleChange} required />
+        <input type="number" name="price" placeholder="Precio" value={formData.price} onChange={handleChange} required step="1" min="0" />
+        <input type="text" name="category" placeholder="Categoría (música, feria, teatro...)" value={formData.category} onChange={handleChange} />
+        <input type="file" name="image" accept="image/*" onChange={handleChange} />
+        <button type="submit">Guardar evento</button>
+      </form>
+
+      {showConfirmModal && location && (
+        <div className="modal">
+          <div className="modal-content">
+            <h3>¿Es correcta esta ubicación?</h3>
+            <MapForAddress lat={location.lat} lon={location.lon} />
+            <div className="modal-actions">
+              <button className="confirm" onClick={confirmAndSend}>Sí, es correcta</button>
+              <button className="cancel" onClick={() => setShowConfirmModal(false)}>Cancelar</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

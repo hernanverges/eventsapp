@@ -1,6 +1,6 @@
 import '../stylesheets/Events.css';
 
-function EventDetails({ id, title, date, description, time, direction, city, province, price, category }) {
+function EventDetails({ id, title, date, description, time, address, city, province, price, category }) {
 
   return (
     <div className='event-detail-card'>
@@ -15,9 +15,10 @@ function EventDetails({ id, title, date, description, time, direction, city, pro
       <div className='event-description'>
         <p>{description}</p>
       </div>
-      <p>📍 {direction}, {city} - {province}</p>
+      <p>📍 {address}, {city} - {province}</p>
       <p>🏷️ ${price}</p>
-      <p>🗓️ {date} - 🕒 {time}</p>
+      <p>🗓️ {date}</p>
+      <p>🕒 {time}</p>
     </div>
   );
 }

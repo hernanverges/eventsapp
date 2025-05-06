@@ -4,18 +4,20 @@ function EventDetails({ id, title, date, description, time, direction, city, pro
 
   return (
     <div className='event-detail-card'>
-      <h2>{title}</h2>
       <img 
         className='event-detail-image'
         src={`../src/uploads/${id}.png`} 
         alt={`Imagen de ${title}`} 
       />
+
+      <h2>{title}</h2>
+
       <div className='event-description'>
         <p>{description}</p>
       </div>
       <p>📍 {direction}, {city} - {province}</p>
-      <p>🗓️ {date}</p>
-      <p>🕒 {time}</p>
+      <p>🏷️ ${price}</p>
+      <p>🗓️ {date} - 🕒 {time}</p>
     </div>
   );
 }

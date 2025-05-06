@@ -28,13 +28,14 @@
 
   .event-image{
     object-fit: contain;
-    max-width: 80%;
+    max-width: 100%;
     height: 200px;
   }
   
   .event-card h2 {
     font-size: 1.4em;
     margin-bottom: 2px;
+    color: #d35400;
   }
   
   .event-card p {
@@ -53,9 +54,7 @@
     padding: 10px;
     border-radius: 8px;
     text-align: center;
-    gap: 3px;
-    width: 100%;  
-    max-width: 300px;  
+    width: 90%;    
     min-height: 350px;
     background-color: #FDFDFD;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -70,14 +69,17 @@
   .event-detail-card h2 {
     font-size: 1.4em;
     margin-bottom: 2px;
+    color: #d35400;
   }
   
   .event-detail-card p {
     font-size: 1em;
   }
   
-  .event-detail-card a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
+  .event-description{
+    height: fit-content;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    white-space: pre-line;
   }

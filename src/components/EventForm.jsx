@@ -130,12 +130,14 @@ export default function EventForm() {
         required
       />
       <input
-        type="text"
+        type="number"
         name="price"
         placeholder="Precio"
         value={formData.price}
         onChange={handleChange}
         required
+        step="1"
+        min="0"
       />
       <input
         type="text"
@@ -147,7 +149,7 @@ export default function EventForm() {
       <input
         type="file"
         name="image"
-        accept="image/*"  // Solo imágenes
+        accept="image/*" 
         onChange={handleChange}
       />
       <button type="submit">Guardar evento</button>

@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import '../stylesheets/Events.css';
-import Header from './Header.jsx';
-import EventCard from './EventCard.jsx'
-import Map from './Map.jsx'
+import Header from '../components/Header.jsx';
+import EventCard from '../components/EventCard.jsx'
+import Map from '../components/Map.jsx'
 
 const EventDetail = () => {
   const { id } = useParams();

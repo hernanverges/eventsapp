@@ -5,15 +5,15 @@ function Event({ id, title, date, time, direction, city, province, price, catego
 
   return (
     <div className='event-card'>
-      <h2>{title}</h2>
       <img 
         className='event-image'
         src={`../src/uploads/${id}.png`} 
         alt={`Imagen de ${title}`} 
       />
+      <h2> {title} </h2>
       <p>📍 {direction}, {city} - {province}</p>
-      <p>🗓️ {date}</p>
-      <p>🕒 {time}</p>
+      <p>🏷️ ${price}</p>
+      <p>🗓️ {date} - 🕒 {time}</p>
 
       <Link to={`/events/${id}`}>Ver detalles</Link>
     </div>

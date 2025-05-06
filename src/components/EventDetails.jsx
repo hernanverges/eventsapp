@@ -4,6 +4,7 @@ function EventDetails({ id, title, date, description, time, address, city, provi
 
   return (
     <div className='event-detail-card'>
+      <div className="ribbon"><span>{category}</span></div>
       <img 
         className='event-detail-image'
         src={`../src/uploads/${id}.png`} 

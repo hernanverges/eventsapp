@@ -40,6 +40,7 @@ function EventCard({ event, isDetail }) {
 
     :
 
+    <>
     <Event
       key={event._id} 
       id={event._id}
@@ -53,6 +54,7 @@ function EventCard({ event, isDetail }) {
       time={event.time}
       category={event.category}
     />
+    </>
   );
 }
 

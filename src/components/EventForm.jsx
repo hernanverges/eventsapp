@@ -69,6 +69,11 @@ export default function EventForm() {
       }
     }
 
+    if (location) {
+      formDataToSend.append('lat', location.lat);
+      formDataToSend.append('lon', location.lon);
+    }
+
     try {
       const res = await fetch(`${API}/events`, {
         method: 'POST',
@@ -116,7 +121,19 @@ export default function EventForm() {
         <input type="text" name="city" placeholder="Ciudad" value={formData.city} onChange={handleChange} required />
         <input type="text" name="province" placeholder="Provincia" value={formData.province} onChange={handleChange} required />
         <input type="number" name="price" placeholder="Precio" value={formData.price} onChange={handleChange} required step="1" min="0" />
-        <input type="text" name="category" placeholder="Categoría (música, feria, teatro...)" value={formData.category} onChange={handleChange} />
+        <select name="category" value={formData.category} onChange={handleChange}>
+          <option value="">Seleccioná una categoría</option>
+          <option value="Música">Música</option>
+          <option value="Teatro">Teatro</option>
+          <option value="Feria">Feria</option>
+          <option value="Deporte">Deporte</option>
+          <option value="Fiesta">Fiesta</option>
+          <option value="Cine">Cine</option>
+          <option value="Danza">Danza</option>
+          <option value="Pintura">Pintura</option>
+          <option value="Charla/Taller">Charla/Taller</option>
+          <option value="Gastronomía">Gastronomía</option>
+        </select>
         <input type="file" name="image" accept="image/*" onChange={handleChange} />
         <button type="submit">Guardar evento</button>
       </form>

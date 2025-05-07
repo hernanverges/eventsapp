@@ -10,6 +10,67 @@
   box-sizing: border-box;
 }
 
+
+/*CATEGORY MARKERS*/
+
+.custom-marker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #4CAF50; /* Color de fondo por defecto */
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 40px; /* Centrado vertical */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra suave */
+  border: 2px solid #ffffff; /* Borde blanco */
+}
+
+.custom-marker.musica {
+  background-color: #2196F3; /* Azul para música */
+}
+
+.custom-marker.teatro {
+  background-color: #FFC107; /* Amarillo para teatro */
+}
+
+.custom-marker.gastronomia {
+  background-color: #FF5722; /* Naranja para gastronomía */
+}
+
+.custom-marker.danza {
+  background-color: #9C27B0; /* Morado para danza */
+}
+
+.custom-marker.feria {
+  background-color: #8BC34A; /* Verde para feria */
+}
+
+.custom-marker.deporte {
+  background-color: #FF9800; /* Naranja para deporte */
+}
+
+.custom-marker.cine {
+  background-color: #3F51B5; /* Azul para cine */
+}
+
+.custom-marker.pintura {
+  background-color: #E91E63; /* Rosa para pintura */
+}
+
+.custom-marker.charla {
+  background-color: #00BCD4; /* Cian para charla */
+}
+
+
+
+
+/*LOCATION MARKER*/
+
 .location-icon .marker {
   width: 13px;
   height: 13px;

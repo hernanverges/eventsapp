@@ -123,7 +123,7 @@ export default function EventForm() {
         <input type="number" name="price" placeholder="Precio" value={formData.price} onChange={handleChange} required step="1" min="0" />
         <select name="category" value={formData.category} onChange={handleChange}>
           <option value="">Seleccioná una categoría</option>
-          <option value="Música">Música</option>
+          <option value="Musica">Música</option>
           <option value="Teatro">Teatro</option>
           <option value="Feria">Feria</option>
           <option value="Deporte">Deporte</option>
@@ -131,8 +131,8 @@ export default function EventForm() {
           <option value="Cine">Cine</option>
           <option value="Danza">Danza</option>
           <option value="Pintura">Pintura</option>
-          <option value="Charla/Taller">Charla/Taller</option>
-          <option value="Gastronomía">Gastronomía</option>
+          <option value="Charla">Charla/Taller</option>
+          <option value="Gastronomia">Gastronomía</option>
         </select>
         <input type="file" name="image" accept="image/*" onChange={handleChange} />
         <button type="submit">Guardar evento</button>

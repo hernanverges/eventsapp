@@ -41,7 +41,7 @@ function Home() {
       </div>
 
       <div className='map-container'>
-        <Map />
+      {events.length > 0 && <Map events={events} />}
       </div>
     </div>
   );

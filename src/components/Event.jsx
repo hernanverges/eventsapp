@@ -11,9 +11,9 @@ function Event({ id, title, date, time, address, city, province, price, category
         src={`../src/uploads/${id}.png`} 
         alt={`Imagen de ${title}`} 
       />
-      <h2> {title} </h2>
+      <div className='title-container'><h2> {title} </h2></div>
       <p>📍 {address}, {city} - {province}</p>
-      <p>🏷️ ${price}</p>
+      <p>🏷️ {price}</p>
       <p>🗓️ {date}</p>
       <p>🕒 {time}</p>
 

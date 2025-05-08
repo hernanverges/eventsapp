@@ -5,62 +5,57 @@ import '../stylesheets/Map.css';
 
 function Map({ events }) {
   const [error, setError] = useState(null);
-  const [map, setMap] = useState(null);
-  const [marker, setMarker] = useState(null); // Mantener el marcador
+  const mapRef = useRef(null);
+  const userMarkerRef = useRef(null);
+  const hasCenteredMap = useRef(false); // 👈 para centrar una sola vez
 
+  // Icono por categoría
   const getCategoryIcon = (category) => {
     const letterMap = {
       musica: "M",
       teatro: "T",
       gastronomia: "G",
       danza: 'Da',
-      feria: 'F',
+      feria: 'Fe',
+      fiesta: 'Fi',
       deporte: 'De',
       cine: 'Ci',
       pintura: 'P',
       charla: 'Ch',
     };
-  
-    // Obtener la letra correspondiente para la categoría
+
     const letter = letterMap[category.toLowerCase()] || "?";
-  
-    // Crear el ícono con la clase de la categoría para aplicar el estilo correspondiente
+
     return L.divIcon({
       html: `<div class="custom-marker ${category.toLowerCase()}">${letter}</div>`,
       className: "",
-      iconSize: [20, 20], // Ajustado a un tamaño más adecuado
-      iconAnchor: [10, 20], // Alineación centrada en la parte inferior
+      iconSize: [20, 20],
+      iconAnchor: [10, 20],
     });
   };
 
-
-
+  // Inicializa el mapa
   useEffect(() => {
     const mapInstance = L.map('map', {
-      center: [-34.540278, -58.481667], 
+      center: [-34.540278, -58.481667],
       zoom: 13,
     });
-  
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapInstance);
-    
-    mapRef.current = mapInstance; // ✅ esto te faltaba
-    setMap(mapInstance);
-  
+    mapRef.current = mapInstance;
+
     return () => {
       mapInstance.remove();
     };
   }, []);
 
-
-  const mapRef = useRef(null);
-
+  // Agrega marcadores de eventos
   useEffect(() => {
     if (!mapRef.current || !events || events.length === 0) return;
-  
+
     const map = mapRef.current;
-  
     const markerGroup = L.layerGroup().addTo(map);
-  
+
     events.forEach((event) => {
       if (
         typeof event.lat === 'number' &&
@@ -75,58 +70,62 @@ function Map({ events }) {
         console.warn("Evento con coordenadas inválidas:", event);
       }
     });
-  
+
     return () => {
       map.removeLayer(markerGroup);
-      console.log(markerGroup);
     };
   }, [events]);
-  
+
+  // Geolocalización del usuario
   useEffect(() => {
-    if (navigator.geolocation) {
-      const intervalId = setInterval(() => {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const { latitude, longitude } = position.coords;
-
-            if (map) {
-              map.panTo([latitude, longitude]); // Centra el mapa en la ubicación
-
-              // Si no hay marcador, creamos uno
-              if (!marker) {
-                const newMarker = L.marker([latitude, longitude], {
-                  icon: L.divIcon({
-                    className: 'location-icon',
-                    html: `<div class="marker"></div>`,
-                  }),
-                }).addTo(map);
-                setMarker(newMarker); // Guardamos el marcador en el estado
-              } else {
-                marker.setLatLng([latitude, longitude]); // Actualiza la posición del marcador existente
-              }
-            }
-          },
-          (error) => {
-            if (error.code === 3) {
-              setError('Tiempo de espera agotado para obtener la ubicación.');
-            } else {
-              setError('Error al obtener la ubicación.');
-            }
-            console.error(error);
-          },
-          {
-            enableHighAccuracy: true,
-            timeout: 20000,  
-            maximumAge: 0,
-          }
-        );
-      }, 10000); 
-
-      return () => clearInterval(intervalId); // Limpiar el intervalo cuando se desmonta el componente
-    } else {
-      setError('Geolocalización no está soportada en este navegador.');
+    if (!navigator.geolocation || !mapRef.current) {
+      setError('Geolocalización no disponible');
+      return;
     }
-  }, [map, marker]); // La dependencia del marcador asegura que se actualice su posición
+
+    const map = mapRef.current;
+
+    const watchId = navigator.geolocation.watchPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+
+        // Centrar solo una vez
+        if (!hasCenteredMap.current) {
+          map.panTo([latitude, longitude]);
+          hasCenteredMap.current = true;
+        }
+
+        if (!userMarkerRef.current) {
+          const newMarker = L.marker([latitude, longitude], {
+            icon: L.divIcon({
+              className: 'location-icon',
+              html: `<div class="marker"></div>`,
+            }),
+          }).addTo(map);
+          userMarkerRef.current = newMarker;
+        } else {
+          userMarkerRef.current.setLatLng([latitude, longitude]);
+        }
+      },
+      (err) => {
+        if (err.code === 3) {
+          setError('Tiempo de espera agotado para obtener la ubicación.');
+        } else {
+          setError('Error al obtener la ubicación.');
+        }
+        console.error(err);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 20000,
+        maximumAge: 0,
+      }
+    );
+
+    return () => {
+      navigator.geolocation.clearWatch(watchId);
+    };
+  }, []);
 
   return (
     <div>
@@ -134,9 +133,6 @@ function Map({ events }) {
       <div>{error && <p>{error}</p>}</div>
     </div>
   );
-
-
-
 }
 
 export default Map;

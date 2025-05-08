@@ -17,7 +17,7 @@ function EventDetails({ id, title, date, description, time, address, city, provi
         <p>{description}</p>
       </div>
       <p>📍 {address}, {city} - {province}</p>
-      <p>🏷️ ${price}</p>
+      <p>🏷️ {price}</p>
       <p>🗓️ {date}</p>
       <p>🕒 {time}</p>
     </div>

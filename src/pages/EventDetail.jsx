@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import '../stylesheets/Events.css';
 import Header from '../components/Header.jsx';
 import EventCard from '../components/EventCard.jsx'
-import Map from '../components/Map.jsx'
+import MapForAddress from '../components/MapForAddress.jsx'
+import '../stylesheets/MapForAddress.css'
 
 const EventDetail = () => {
   const { id } = useParams();
@@ -38,7 +39,9 @@ if (!event) return <p>No se encontró el evento.</p>;
     <>
     <Header />
     <EventCard key={event._id} event={event} isDetail={true}/>
-    <Map />
+    <div className='mapforaddress-container'>
+    <MapForAddress event={event} />
+    </div>
     </>
   );
 };

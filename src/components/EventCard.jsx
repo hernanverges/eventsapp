@@ -21,6 +21,11 @@ function EventCard({ event, isDetail }) {
 
   const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
 
+  const displayPrice =
+  Number(event.price) === 0
+    ? "¡GRATIS!"
+    : `$ ${new Intl.NumberFormat("es-AR").format(event.price)}`;
+
   return (
   
     isDetail ? 
@@ -33,7 +38,7 @@ function EventCard({ event, isDetail }) {
       address={capitalize(event.address)}
       city={capitalize(event.city)}
       province={capitalize(event.province)}
-      price={event.price}
+      price={displayPrice}
       time={event.time}
       category={event.category}
     />
@@ -50,7 +55,7 @@ function EventCard({ event, isDetail }) {
       address={capitalize(event.address)}
       city={capitalize(event.city)}
       province={capitalize(event.province)}
-      price={event.price}
+      price={displayPrice}
       time={event.time}
       category={event.category}
     />

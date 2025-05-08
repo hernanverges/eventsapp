@@ -1,21 +1,24 @@
 import { useEffect } from 'react';
 import L from 'leaflet';
+import '../stylesheets/MapForAddress.css'
 
-export default function MapForAddress({ lat, lon }) {
+export default function MapForAddress({ event }) {
   useEffect(() => {
-    if (lat && lon) {
-      const map = L.map('map-address').setView([lat, lon], 15);
+    if (event?.lat && event?.lon) {
+      const map = L.map('map-container').setView([event.lat, event.lon], 14);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
 
-      L.marker([lat, lon]).addTo(map).bindPopup('Ubicación del evento').openPopup();
+      L.marker([event.lat, event.lon])
+        .addTo(map)
 
-      // Cleanup
+
+      // Cleanup al desmontar
       return () => map.remove();
     }
-  }, [lat, lon]);
+  }, [event]);
 
-  return <div id="map-address" style={{ height: '300px', marginTop: '1rem' }}></div>;
+  return <div id="map-container"></div>;
 }

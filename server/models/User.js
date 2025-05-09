@@ -18,6 +18,10 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     match: [/^\S+@\S+\.\S+$/, 'Por favor ingresa un email válido.'],
   },
+
+  verified: {
+    type: Boolean, default: false,
+  }
 }, { timestamps: true });
 
 UserSchema.pre('save', async function(next) {

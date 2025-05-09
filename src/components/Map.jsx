@@ -12,9 +12,9 @@ function Map({ events }) {
   // Icono por categoría
   const getCategoryIcon = (category) => {
     const letterMap = {
-      musica: "M",
-      teatro: "T",
-      gastronomia: "G",
+      musica: 'M',
+      teatro: 'T',
+      gastronomia: 'G',
       danza: 'Da',
       feria: 'Fe',
       fiesta: 'Fi',
@@ -24,11 +24,11 @@ function Map({ events }) {
       charla: 'Ch',
     };
 
-    const letter = letterMap[category.toLowerCase()] || "?";
+    const letter = letterMap[category.toLowerCase()] || '?';
 
     return L.divIcon({
-      html: `<div class="custom-marker ${category.toLowerCase()}">${letter}</div>`,
-      className: "",
+      html: `<div class='custom-marker ${category.toLowerCase()}'>${letter}</div>`,
+      className: '',
       iconSize: [20, 20],
       iconAnchor: [10, 20],
     });
@@ -67,7 +67,7 @@ function Map({ events }) {
           icon: getCategoryIcon(event.category),
         }).addTo(markerGroup);
       } else {
-        console.warn("Evento con coordenadas inválidas:", event);
+        console.warn('Evento con coordenadas inválidas:', event);
       }
     });
 
@@ -99,7 +99,7 @@ function Map({ events }) {
           const newMarker = L.marker([latitude, longitude], {
             icon: L.divIcon({
               className: 'location-icon',
-              html: `<div class="marker"></div>`,
+              html: `<div class='marker'></div>`,
             }),
           }).addTo(map);
           userMarkerRef.current = newMarker;
@@ -129,7 +129,7 @@ function Map({ events }) {
 
   return (
     <div>
-      <div id="map"></div>
+      <div id='map'></div>
       <div>{error && <p>{error}</p>}</div>
     </div>
   );

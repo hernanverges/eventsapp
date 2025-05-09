@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import '../stylesheets/Events.css';
 import Header from '../components/Header.jsx';
 import EventCard from '../components/EventCard.jsx'
@@ -17,7 +17,7 @@ useEffect(() => {
     try {
       const response = await fetch(`http://localhost:5000/api/events/${id}`);
       if (!response.ok) {
-        throw new Error("Evento no encontrado");
+        throw new Error('Evento no encontrado');
       }
       const data = await response.json();
       setEvent(data);

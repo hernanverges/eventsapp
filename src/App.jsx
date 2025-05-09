@@ -6,11 +6,11 @@ import CreateEvent from './pages/CreateEvent';
 function App() {
   return (
     <div
-    className="app-container">
+    className='app-container'>
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/events/:id" element={<EventDetail />} /> {}
-      <Route path="/create-event" element={<CreateEvent />} />
+      <Route path='/' element={<Home />} />
+      <Route path='/events/:id' element={<EventDetail />} /> {}
+      <Route path='/create-event' element={<CreateEvent />} />
     </Routes>
     </div>
   );

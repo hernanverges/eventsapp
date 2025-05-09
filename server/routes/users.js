@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
   } catch (err) {
     if (err.code === 11000) {
         const duplicatedField = Object.keys(err.keyValue)[0];
-        return res.status(409).json({ error: `El campo '${duplicatedField}' ya está registrado` });
+        return res.status(409).json({ error: `El '${duplicatedField}' ya está registrado` });
       }
     console.error(err);
     res.status(500).json({ error: 'Error al guardar el usuario' });

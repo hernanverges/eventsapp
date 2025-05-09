@@ -34,7 +34,7 @@ function Home() {
   return (
     <div className='home-container'>
       <Header></Header>
-      <div className="events-list">
+      <div className='events-list'>
         {events.map((event) => (
           <EventCard key={event._id} event={event} isDetail={false} /> 
         ))}

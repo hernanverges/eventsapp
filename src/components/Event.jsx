@@ -5,7 +5,7 @@ function Event({ id, title, date, time, address, city, province, price, category
 
   return (
     <div className='event-card'>
-      <div className="ribbon"><span>{category}</span></div>
+      <div className='ribbon'><span>{category}</span></div>
       <img 
         className='event-image'
         src={`../src/uploads/${id}.png`} 

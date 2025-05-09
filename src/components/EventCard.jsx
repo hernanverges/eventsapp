@@ -12,19 +12,19 @@ function EventCard({ event, isDetail }) {
       .join(' ');
   }
 
-  const formattedDate = new Date(event.date).toLocaleDateString("es-AR", {
-    weekday: "long", 
-    day: "2-digit",  
-    month: "long",  
-    year: "numeric"
+  const formattedDate = new Date(event.date).toLocaleDateString('es-AR', {
+    weekday: 'long', 
+    day: '2-digit',  
+    month: 'long',  
+    year: 'numeric'
   });
 
   const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
 
   const displayPrice =
   Number(event.price) === 0
-    ? "¡GRATIS!"
-    : `$ ${new Intl.NumberFormat("es-AR").format(event.price)}`;
+    ? '¡GRATIS!'
+    : `$ ${new Intl.NumberFormat('es-AR').format(event.price)}`;
 
   return (
   

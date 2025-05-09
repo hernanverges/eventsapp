@@ -20,5 +20,5 @@ export default function MapForAddress({ event }) {
     }
   }, [event]);
 
-  return <div id="map-container"></div>;
+  return <div id='map-container'></div>;
 }

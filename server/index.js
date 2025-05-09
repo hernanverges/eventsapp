@@ -39,7 +39,7 @@ const PORT = process.env.PORT || 5000;
 const MONGO = process.env.MONGO_URI;  
 
 if (!MONGO) {
-  console.error("MongoDB URI no está definida en el archivo .env");
+  console.error('MongoDB URI no está definida en el archivo .env');
   process.exit(1);  
 }
 
@@ -49,7 +49,7 @@ mongoose.connect(MONGO)
     app.listen(PORT, () => console.log(`🚀 Server corriendo en puerto ${PORT}`));
   })
   .catch((error) => {
-    console.error("Error al conectar con MongoDB:", error);
+    console.error('Error al conectar con MongoDB:', error);
     process.exit(1);  
   });
 

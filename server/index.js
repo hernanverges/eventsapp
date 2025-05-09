@@ -6,12 +6,15 @@ import path from 'path';
 import eventsRouter from './routes/events.js';  
 import dotenv from 'dotenv';
 import fs from 'fs';
+import usersRoutes from './routes/users.js';
+
 
 dotenv.config({ path: '../.env' });  
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use('/api/users', usersRoutes);
 
 
 const storage = multer.diskStorage({

@@ -1,5 +1,5 @@
 import express from 'express';
-import VerificationToken from '../models/VerificationToken.js';
+import AuthenticationToken from '../models/AuthenticationToken.js';
 import User from '../models/User.js';
 
 const router = express.Router();
@@ -8,7 +8,7 @@ router.get('/:token', async (req, res) => {
   try {
     const token = req.params.token;
 
-    const storedToken = await VerificationToken.findOne({ token });
+    const storedToken = await AuthenticationToken.findOne({ token });
 
     if (!storedToken) {
       return res.status(400).send('Token inválido o expirado.');
@@ -22,7 +22,7 @@ router.get('/:token', async (req, res) => {
     user.verified = true;
     await user.save();
 
-    await VerificationToken.deleteOne({ _id: storedToken._id });
+    await AuthenticationToken.deleteOne({ _id: storedToken._id });
 
     res.send('¡Cuenta verificada con éxito!');
   } catch (err) {

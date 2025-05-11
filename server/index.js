@@ -33,8 +33,6 @@ app.use('/api/events', eventsRouter);
 
 app.use('/uploads', express.static('src/uploads'));
 
-app.use('/api/events', eventsRouter);
-
 const PORT = process.env.PORT || 5000;
 const MONGO = process.env.MONGO_URI;  
 

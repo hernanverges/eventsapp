@@ -48,7 +48,7 @@ export default function AuthModal({ onClose }) {
   return (
     <div className='auth-modal-overlay'>
       <div className='auth-modal'>
-        <button className='close-btn' onClick={onClose}>✖</button>
+        <button className='close-btn' onClick={onClose}>Cerrar ✖</button>
   
         {emailSent ? (
           <div className='success-message'>
@@ -93,11 +93,11 @@ export default function AuthModal({ onClose }) {
                   />
                 </>
               )}
-              <button type='submit'>{isLogin ? 'Ingresar' : 'Registrarme'}</button>
+              <button className='log-button' type='submit'>{isLogin ? 'Ingresar' : 'Registrarme'}</button>
             </form>
             <p>
               {isLogin ? '¿No tenés cuenta? ' : '¿Ya tenés cuenta? '}
-              <button onClick={() => setIsLogin(!isLogin)}>
+              <button className='log-button' onClick={() => setIsLogin(!isLogin)}>
                 {isLogin ? 'Registrate' : 'Iniciá sesión'}
               </button>
             </p>

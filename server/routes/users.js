@@ -3,6 +3,7 @@ import User from '../models/User.js';
 import crypto from 'crypto';
 import VerificationToken from '../models/VerificationToken.js';
 import sendVerificationMail from '../utils/sendVerificationMail.js';
+import loginUser  from "../utils/userLogin.js";
 
 const router = express.Router();
 
@@ -24,6 +25,7 @@ router.post('/', async (req, res) => {
       sendVerificationMail(newUser.mail, tokenString);
 
 
+
     res.status(201).json(savedUser);
   } catch (err) {
     if (err.code === 11000) {
@@ -35,6 +37,13 @@ router.post('/', async (req, res) => {
   }
 });
 
+
+/* METODO POST PARA LOGIN */ 
+
+router.post("/login", loginUser);
+
+
+/*METODO GET SIN CONTRASEÑA*/ 
 
 router.get('/:id', async (req, res) => {
     try {

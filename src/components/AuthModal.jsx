@@ -2,7 +2,6 @@ import { useState } from 'react';
 import '../stylesheets/AuthModal.css';
 import { Link } from 'react-router-dom';
 
-
 export default function AuthModal({ onClose }) {
 
   const API = import.meta.env.VITE_API_URL;
@@ -13,34 +12,67 @@ export default function AuthModal({ onClose }) {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [username, setUsername] = useState('');
   const [emailSent, setEmailSent] = useState(false);
+  const [error, setError] = useState(''); 
 
   const handleSubmit = async (e) => {
-    
     e.preventDefault();
-    console.log('Enviar datos');
+    setError(''); 
 
     if (!isLogin) {
+
+      //LOGICA DE REGISTRO DE USUARIO//
+
       if (password !== repeatPassword) {
         alert('Las contraseñas no coinciden');
         return;
       }
-  
-      const response = await fetch(`${API}/users`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          user: username,
-          password,
-          mail: email,
-        }),
-      });
-    
-      const data = await response.json();
-    
-      if (response.ok) {
-        setEmailSent(true);
-      } else {
-        alert(data.error || 'Ocurrió un error en el registro');
+
+      try {
+        const response = await fetch(`${API}/users`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            user: username,
+            password,
+            mail: email,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setEmailSent(true);
+        } else {
+          alert(data.error || 'Ocurrió un error en el registro');
+        }
+      } catch (err) {
+        alert('Ocurrió un error en el registro');
+      }
+    } else {
+
+      //LOGICA DE LOGIN DE USUARIO//
+
+      try {
+        const response = await fetch(`${API}/users/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            mail: email,
+            password,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('user', JSON.stringify(data.user));
+          window.location.href = '/profile'; 
+        } else {
+          setError('Correo o contraseña incorrectos.');
+        }
+      } catch (err) {
+        setError('Ocurrió un error al iniciar sesión.');
       }
     }
   };
@@ -49,7 +81,7 @@ export default function AuthModal({ onClose }) {
     <div className='auth-modal-overlay'>
       <div className='auth-modal'>
         <button className='close-btn' onClick={onClose}>Cerrar ✖</button>
-  
+
         {emailSent ? (
           <div className='success-message'>
             <h3>📩 Verificá tu correo</h3>
@@ -60,6 +92,7 @@ export default function AuthModal({ onClose }) {
         ) : (
           <>
             <h2>{isLogin ? 'Iniciar sesión' : 'Registrarse'}</h2>
+            {error && <p className="error">{error}</p>} 
             <form onSubmit={handleSubmit}>
               <input
                 type='email'

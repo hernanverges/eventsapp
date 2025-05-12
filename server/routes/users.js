@@ -52,14 +52,13 @@ router.post("/login", loginUser);
 
 router.get('/profile', verifyToken, async (req, res) => {
     try {
-      // Accedemos al usuario desde req.user, que fue establecido en verifyToken.js
       const user = await User.findById(req.user.id).select('-password'); 
   
       if (!user) {
         return res.status(404).json({ error: 'Usuario no encontrado' });
       }
   
-      res.json(user);  // Devuelve los detalles del usuario (sin contraseña)
+      res.json(user);  
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: 'Error al obtener el usuario' });

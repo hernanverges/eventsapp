@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
+import '../stylesheets/UserProfile.css';
+import { Link } from 'react-router-dom';
 
 export default function UserProfile() {
   const [userData, setUserData] = useState(null);
+
+  const clearLocalStorage = () => {
+    localStorage.clear();
+  }
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -32,10 +38,17 @@ export default function UserProfile() {
   if (!userData) return <p>Cargando perfil...</p>;
 
   return (
-    <div>
-      <h2>Perfil de usuario</h2>
-      <p><strong>Nombre:</strong> {userData.user}</p>
-      <p><strong>Email:</strong> {userData.mail}</p>
+
+    <div className='userprofile-container'>
+        <div className='usernav-container'>
+            <nav>Eventos</nav>
+        </div>
+        <div className='userdata-container'>
+            <h2>Perfil de usuario</h2>
+            <p className='name-title'>Nombre:</p> <p className='name-data'>{userData.user}</p>
+            <p className='email-title'>Email:</p> <p className='mail-data' >{userData.mail}</p>
+            <Link onClick={ clearLocalStorage } to='/'>Salir</Link>
+        </div>
     </div>
   );
 }

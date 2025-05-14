@@ -1,0 +1,15 @@
+.userprofile-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.usernav-container{
+    width: 30vw;
+    height: 100%;
+    background-color: aqua;
+}
+
+.userdata-container{
+    width:70%;
+}

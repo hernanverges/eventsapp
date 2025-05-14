@@ -142,7 +142,7 @@ export default function EventForm() {
         <div className='modal'>
           <div className='modal-content'>
             <h3>¿Es correcta esta ubicación?</h3>
-            <MapForAddress lat={location.lat} lon={location.lon} />
+            <MapForAddress event={{ lat: location.lat, lon: location.lon }} />
             <div className='modal-actions'>
               <button className='confirm' onClick={confirmAndSend}>Sí, es correcta</button>
               <button className='cancel' onClick={() => setShowConfirmModal(false)}>Cancelar</button>

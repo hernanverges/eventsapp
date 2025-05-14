@@ -68,6 +68,7 @@ export default function AuthModal({ onClose }) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('user', JSON.stringify(data.user));
           window.location.href = '/profile'; 
+          onClose();
         } else {
           setError('Correo o contraseña incorrectos.');
         }

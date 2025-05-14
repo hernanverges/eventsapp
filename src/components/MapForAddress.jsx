@@ -15,10 +15,13 @@ export default function MapForAddress({ event }) {
         .addTo(map)
 
 
-      // Cleanup al desmontar
       return () => map.remove();
     }
   }, [event]);
 
-  return <div id='map-container'></div>;
+  return (
+    <div className="mapforaddress-container">
+      <div id="map-container"></div>
+    </div>
+  );
 }

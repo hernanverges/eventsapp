@@ -1,6 +1,6 @@
 import '../stylesheets/Header.css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AuthModal from './AuthModal';
 
 function Header() {
@@ -9,8 +9,21 @@ function Header() {
   const openAuthModal = () => setShowAuthModal(true);
   const closeAuthModal = () => setShowAuthModal(false);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   return (
+
+    
     <div className='header-container'>
+      
       <div className='logo-container'>
         <img
           src='/images/planazo-logo.png'
@@ -23,7 +36,13 @@ function Header() {
         <Link className='nav-Link' to='/'>Home</Link>
         <Link className='nav-Link' to='#'>Eventos</Link>
         <Link className='nav-Link' to='#'>Mapa</Link>
-        <Link className='nav-Link' onClick={openAuthModal}>Perfil</Link>
+
+        {isLoggedIn ? (
+          <Link className='nav-Link' to='/profile'>Perfil</Link>
+          ) : (
+          <Link className='nav-Link' onClick={openAuthModal}>Perfil</Link>
+          )}
+
       </nav>
 
       <div className='search-bar'>

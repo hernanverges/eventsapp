@@ -11,6 +11,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
 .search-bar {
   position: relative;
   transform: none;
@@ -19,7 +20,6 @@
 .planazo-logo{
   width: auto;
   height: 70px;
-  padding: 0.5rem 1rem 0.5rem 3rem;
 }
 
 .search-bar input {
@@ -77,10 +77,14 @@
   .search-bar {
     padding-right: 3rem;
   }
+
+  .planazo-logo{
+    padding: 1rem;
+  }
 }
 
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .nav-menu {
     flex-direction: column;
     gap: 0.3rem;

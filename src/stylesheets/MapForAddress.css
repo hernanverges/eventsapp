@@ -5,8 +5,7 @@
 
 .mapforaddress-container {
     width: 90%; 
-    height: 50vh; 
-    min-width: 70vw; 
+    height: 50vh;  
     margin: 20px auto;
     border-radius: 20px;
     border: 2px solid black;

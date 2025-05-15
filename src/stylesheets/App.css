@@ -11,5 +11,9 @@
   box-sizing: border-box;
 }
 
+.map-container{
+  min-width: 90vw;
+}
+
 
 

@@ -11,15 +11,18 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.planazo-logo {
+  width: auto;
+  height: 70px;
+  padding-bottom: 0.5rem; /* para móvil */
+}
 
 .search-bar {
   position: relative;
-  transform: none;
-}
-
-.planazo-logo{
-  width: auto;
-  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0;
 }
 
 .search-bar input {
@@ -27,63 +30,110 @@
   padding: 0.5rem 2rem 0.5rem 1rem;
   border-radius: 999px;
   border: 1px solid #ccc;
-  width: 60vw;
-  max-width: 200px;
+  width: 90vw;  
+  max-width: 300px;
+  box-sizing: border-box;
 }
 
 .nav-menu {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .nav-Link {
   font-family: Inter, sans-serif;
-  color: #007bff;  
-  text-decoration: none;  
-  font-size: 1.1rem;  
-  padding: 10px 15px;  
-  border-radius: 50px;  
-  margin: 0 10px;  
-  transition: all 0.3s ease;  
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  border-radius: 50px;
+  margin: 0 10px;
+  transition: all 0.3s ease;
 }
-
 
 .nav-Link:hover {
-  background-color: #007bff;  
-  color: white;  
-  transform: scale(1.05);  
+  background-color: #007bff;
+  color: white;
+  transform: scale(1.05);
 }
-
 
 .nav-Link:active {
-  background-color: #0056b3;  
-  color: white;  
-  transform: scale(0.98);  
+  background-color: #0056b3;
+  color: white;
+  transform: scale(0.98);
 }
 
-/* Desktop queries */
+/*HAMBURGUER BUTTON*/
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  color: #007bff;
+}
+
+/* HAMBURGUER BUTTON FOR MOBILE */
+@media (max-width: 767px) {
+  .hamburger {
+    display: block;
+    align-self: flex-end;
+    align-self: center;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
+}
+
+/* DESKTOP QUERIES */
 @media (min-width: 768px) {
   .header-container {
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
 
-  .logo-text {
-    text-align: left;
-    padding-left: 20px;
+  .planazo-logo {
+    padding: 1rem 1rem 1rem 2rem;
+    height: 70px;
   }
 
   .search-bar {
-    padding-right: 3rem;
+    width: auto;
+    padding-right: 1rem;
+    justify-content: flex-start;
   }
 
-  .planazo-logo{
-    padding: 1rem;
+  .search-bar input {
+    max-width: 300px;
+    width: 20vw
+  }
+
+  .nav-menu {
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .hamburger {
+    display: none;
   }
 }
 
-
+/* SMALL DEVICES QUERIES */
 @media (max-width: 450px) {
   .nav-menu {
     flex-direction: column;
@@ -93,12 +143,11 @@
 
   .nav-menu a {
     font-size: 0.95rem;
-    padding: 8px 12px;
     margin: 0;
   }
 
   .search-bar input {
-    width: 80vw;
+    width: 90vw;
   }
 
   .logo-text h1 {

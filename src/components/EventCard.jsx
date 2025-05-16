@@ -1,6 +1,6 @@
 import '../stylesheets/Events.css';
 import Event from './Event.jsx';
-import EventDetails from './EventDetails.jsx'
+import EventDetails from './EventDetails.jsx';
 
 function EventCard({ event, isDetail }) {
   function capitalize(str) {

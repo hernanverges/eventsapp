@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import '../stylesheets/Events.css';
+import LikeButton from './LikeButton.jsx';
 
 function Event({ id, title, date, time, address, city, province, price, category }) {
 
   return (
     <div className='event-card'>
       <div className='ribbon'><span>{category}</span></div>
+      <LikeButton className='like-button' />
       <img 
         className='event-image'
         src={`../src/uploads/${id}.png`} 

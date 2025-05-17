@@ -1,5 +1,5 @@
-import Header from '../components/Header.jsx';
-import UserProfile from '../components/UserProfile.jsx';
+import Header from '../components/Header/Header.jsx';
+import UserProfile from '../components/UserProfile/UserProfile.jsx';
 
 function Profile() {
 

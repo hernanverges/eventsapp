@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import EventCard from '../components/EventCard'; 
+import EventCard from '../components/EventCard/EventCard.jsx'; 
 import '../stylesheets/App.css';
-import '../stylesheets/Map.css';
-import Map from '../components/Map.jsx';
-import Header from '../components/Header.jsx';
+import '../components/Map/Map.css';
+import Map from '../components/Map/Map.jsx';
+import Header from '../components/Header/Header.jsx';
 
 const API = import.meta.env.VITE_API_URL; 
 

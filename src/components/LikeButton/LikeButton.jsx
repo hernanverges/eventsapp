@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import '../stylesheets/LikeButton.css';
+import './LikeButton.css';
 
 const LikeButton = () => {
   const [liked, setLiked] = useState(false);

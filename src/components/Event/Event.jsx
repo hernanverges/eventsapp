@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import '../stylesheets/Events.css';
-import LikeButton from './LikeButton.jsx';
+import './Events.css';
+import LikeButton from '../LikeButton/LikeButton.jsx';
 
 function Event({ id, title, date, time, address, city, province, price, category }) {
 

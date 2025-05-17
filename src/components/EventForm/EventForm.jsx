@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import '../stylesheets/EventForm.css';
-import MapForAddress from './MapForAddress'; 
+import './EventForm.css';
+import MapForAddress from '../MapForAddress/MapForAddress'; 
 
 const API = import.meta.env.VITE_API_URL;
 

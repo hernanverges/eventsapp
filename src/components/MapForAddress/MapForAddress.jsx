@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import L from 'leaflet';
-import '../stylesheets/MapForAddress.css'
+import './MapForAddress.css'
 
 export default function MapForAddress({ event }) {
   useEffect(() => {
@@ -20,8 +20,6 @@ export default function MapForAddress({ event }) {
   }, [event]);
 
   return (
-    <div className="mapforaddress-container">
       <div id="map-container"></div>
-    </div>
   );
 }

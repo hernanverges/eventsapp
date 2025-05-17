@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../stylesheets/AuthModal.css';
+import './AuthModal.css';
 import { Link } from 'react-router-dom';
 
 export default function AuthModal({ onClose }) {

@@ -1,7 +1,7 @@
-import '../stylesheets/Header.css';
+import './Header.css';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import AuthModal from './AuthModal';
+import AuthModal from '../AuthModal/AuthModal.jsx';
 
 function Header() {
   const [showAuthModal, setShowAuthModal] = useState(false);

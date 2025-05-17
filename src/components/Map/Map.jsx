@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import '../stylesheets/Map.css';
+import './Map.css';
 
 function Map({ events }) {
   const [error, setError] = useState(null);

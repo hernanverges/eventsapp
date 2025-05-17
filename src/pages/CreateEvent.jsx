@@ -1,5 +1,5 @@
-import EventForm from '../components/EventForm';
-import Header from '../components/Header';
+import EventForm from '../components/EventForm/EventForm.jsx';
+import Header from '../components/Header/Header.jsx';
 
 export default function CreateEvent() {
   return (

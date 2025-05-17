@@ -43,9 +43,43 @@ router.post('/', async (req, res) => {
 });
 
 
+
 /* METODO POST PARA LOGIN DE USUARIO */ 
 
 router.post("/login", loginUser);
+
+
+
+//GUARDAR EVENTOS FAVORITOS //
+
+router.post("/like", verifyToken, async (req, res) => {
+  console.log("BODY:", req.body);
+  console.log("USER:", req.user);
+  const userId = req.user.id; 
+  const { eventId } = req.body;
+
+  if (!eventId) return res.status(400).json({ error: "Falta el eventId" });
+
+  try {
+    const user = await User.findById(userId);
+
+    const index = user.likedEvents.indexOf(eventId);
+
+    if (index === -1) {
+    user.likedEvents.push(eventId);
+    } else {
+    user.likedEvents.splice(index, 1); 
+    }
+
+    await user.save();
+
+    res.status(200).json({ message: "Evento agregado a favoritos" });
+  } catch (error) {
+    console.error("Error al dar like:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+});
+
 
 
 /*METODO GET PARA OBTENER USUARIO SIN CONTRASEÑA*/ 

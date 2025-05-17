@@ -7,7 +7,7 @@ function Event({ id, title, date, time, address, city, province, price, category
   return (
     <div className='event-card'>
       <div className='ribbon'><span>{category}</span></div>
-      <LikeButton className='like-button' />
+      <LikeButton className='like-button' eventId={id}/>
       <img 
         className='event-image'
         src={`../src/uploads/${id}.png`} 

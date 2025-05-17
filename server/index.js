@@ -12,10 +12,14 @@ import verifyRoutes from './routes/verify.js';
 dotenv.config({ path: '../.env' });  
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173", 
+  credentials: true        
+}));
 app.use(express.json());
 app.use('/api/users', usersRoutes);
 app.use('/api/verify', verifyRoutes);
+
 
 
 const storage = multer.diskStorage({

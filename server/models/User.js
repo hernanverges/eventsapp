@@ -21,7 +21,10 @@ const UserSchema = new mongoose.Schema({
 
   verified: {
     type: Boolean, default: false,
-  }
+  },
+
+  likedEvents: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event" }],
+
 }, { timestamps: true });
 
 UserSchema.pre('save', async function(next) {

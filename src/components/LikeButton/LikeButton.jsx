@@ -60,7 +60,7 @@ const LikeButton = ({ eventId }) => {
     }
   };
 
-  if (!token) return null; // O un botón para loguearse
+  if (!token) return null; 
 
   return (
     <button

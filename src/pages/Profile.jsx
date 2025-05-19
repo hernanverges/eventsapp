@@ -1,20 +1,19 @@
 import Header from '../components/Header/Header.jsx';
-import UserProfile from '../components/UserProfile/UserProfile.jsx';
+import UserNavBar from '../components/UserNavBar/UserNavBar.jsx';
+import { Outlet } from 'react-router-dom';
 
 function Profile() {
+  const storedUser = JSON.parse(localStorage.getItem('user'));
 
-    const storedUser = JSON.parse(localStorage.getItem('user'));
+  if (!storedUser) return <div>Iniciá sesión para ver tu perfil</div>;
 
-    if (!storedUser) return <div>Iniciá sesión para ver tu perfil</div>;
-
-
-return (
+  return (
     <>
       <Header />
-      <UserProfile userId={storedUser} />
+      <UserNavBar />
+      <Outlet /> 
     </>
   );
-
 }
 
 export default Profile;

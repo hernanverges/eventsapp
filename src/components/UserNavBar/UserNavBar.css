@@ -1,0 +1,14 @@
+.usernav-container{
+    width: 100%;
+    min-height: 3rem;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    background-color: #fefefe;
+    margin: 1rem;
+}
+
+.usernavbar-link {
+    text-decoration: none;
+    color: #007bff;
+}

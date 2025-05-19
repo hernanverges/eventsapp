@@ -38,17 +38,11 @@ export default function UserProfile() {
   if (!userData) return <p>Cargando perfil...</p>;
 
   return (
-
-    <div className='userprofile-container'>
-        <div className='usernav-container'>
-            <nav>Eventos</nav>
-        </div>
         <div className='userdata-container'>
             <h2>Perfil de usuario</h2>
             <p className='name-title'>Nombre:</p> <p className='name-data'>{userData.user}</p>
             <p className='email-title'>Email:</p> <p className='mail-data' >{userData.mail}</p>
             <Link onClick={ clearLocalStorage } to='/'>Salir</Link>
         </div>
-    </div>
   );
 }

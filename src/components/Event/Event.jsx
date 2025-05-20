@@ -19,8 +19,10 @@ function Event({ id, title, date, time, address, city, province, price, category
       <p>🗓️ {date}</p>
       <p>🕒 {time}</p>
 
+    <div className='link-container'>
       <Link to={`/events/${id}`}>Ver detalles</Link>
     </div>
+  </div>
   );
 }
 

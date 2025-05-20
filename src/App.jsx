@@ -7,6 +7,7 @@ import UserProfile from './components/UserProfile/UserProfile.jsx';
 import UserEvents from './components/UserEvents/UserEvents.jsx';
 
 function App() {
+
   return (
     <div
     className='app-container'>

@@ -1,25 +1,64 @@
 .header-container {
+  display: none;
+}
+
+/* MOBILE NAVBAR */
+.mobile-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #FDFDFD;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+  z-index: 2000;
+  transition: left 0.3s ease;
+}
+
+.sidebar a {
+  font-size: 1.2rem;
+  color: #007bff;
+  text-decoration: none;
+  display: flex;
   align-items: center;
-  padding: 1rem;
-  background-color: #FDFDFD;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  gap: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.sidebar a:hover {
+  color: #0056b3;
+  transform: translateX(4px);
+}
+
+.sidebar.open {
+  left: 0;
 }
 
 .planazo-logo {
   width: auto;
   height: 70px;
-  padding-bottom: 0.5rem; /* para móvil */
+  padding-bottom: 0.5rem; 
 }
 
 .search-bar {
   position: relative;
-  width: 100%;
+  max-width: 40%;
+  margin: 0;
   display: flex;
   justify-content: center;
   padding: 0;
@@ -35,39 +74,11 @@
   box-sizing: border-box;
 }
 
-.nav-menu {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.nav-Link {
-  font-family: Inter, sans-serif;
-  color: #007bff;
-  text-decoration: none;
-  font-size: 1.1rem;
-  padding: 0.5rem;
-  border-radius: 50px;
-  margin: 0 10px;
-  transition: all 0.3s ease;
-}
-
-.nav-Link:hover {
-  background-color: #007bff;
-  color: white;
-  transform: scale(1.05);
-}
-
-.nav-Link:active {
-  background-color: #0056b3;
-  color: white;
-  transform: scale(0.98);
-}
 
 /*HAMBURGUER BUTTON*/
 .hamburger {
-  display: none;
+  display: flex;
+  align-self: flex-end;
   font-size: 1.8rem;
   background: none;
   border: none;
@@ -76,38 +87,62 @@
   color: #007bff;
 }
 
-/* HAMBURGUER BUTTON FOR MOBILE */
-@media (max-width: 767px) {
-  .hamburger {
-    display: block;
-    align-self: flex-end;
-    align-self: center;
-  }
-
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    margin-top: 0.5rem;
-  }
-
-  .nav-menu.open {
-    display: flex;
-  }
-}
 
 /* DESKTOP QUERIES */
 @media (min-width: 768px) {
   .header-container {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 1rem;
+    background-color: #FDFDFD;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    align-items: center;
+  }
+
+  .mobile-navbar {
+    display: none;
+  }
+
+  .nav-menu {
+    display: block;
     align-items: center;
   }
 
   .planazo-logo {
     padding: 1rem 1rem 1rem 2rem;
     height: 70px;
+  }
+
+  .nav-Link {
+    font-family: Inter, sans-serif;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    border-radius: 50px;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-Link:hover {
+    background-color: #007bff;
+    color: white;
+    transform: scale(1.05);
+  }
+  
+  .nav-Link:active {
+    background-color: #0056b3;
+    color: white;
+    transform: scale(0.98);
+  }
+
+  .hamburger {
+    display: none;
   }
 
   .search-bar {
@@ -119,38 +154,5 @@
   .search-bar input {
     max-width: 300px;
     width: 20vw
-  }
-
-  .nav-menu {
-    flex-direction: row;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 0;
-  }
-
-  .hamburger {
-    display: none;
-  }
-}
-
-/* SMALL DEVICES QUERIES */
-@media (max-width: 450px) {
-  .nav-menu {
-    flex-direction: column;
-    gap: 0.3rem;
-    align-items: center;
-  }
-
-  .nav-menu a {
-    font-size: 0.95rem;
-    margin: 0;
-  }
-
-  .search-bar input {
-    width: 90vw;
-  }
-
-  .logo-text h1 {
-    font-size: 1.4rem;
   }
 }
